@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<nav class = "navbar">
+	<div class = "logo-container">
+	<a href = "/"> CANADA HOTEL</a>	
+	</div>
+</nav>
+
+<h4>RESERVATIONS</h4>
+
+<form action="" method="get">
+	<input type="text" name="date">
+	<input type="submit">
+</form>
+
+	<table>
+		<tr>
+		<td>Room</td>
+		<td>Room Name</td>
+		<td>Guest</td>
+		</tr>
+		
+		<tr th:each="roomReservation: ${roomReservations}">
+		<td th:text="${roomReservation.roomNumber}">Room No</td>
+		<td th:text="${roomReservation.roomName}">Room Name</td>
+		<td th:text="${roomReservation.lastName}!=null? ${roomReservation.lastName} + ',' + ${roomReservation.firstName} : 'VACANT'">Full Name</td>
+		</tr>
+	
+	</table>
+
+</body>
+</html>

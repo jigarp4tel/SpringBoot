@@ -1,0 +1,50 @@
+@charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+* {
+	margin:0px;
+	padding: 0px;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+nav {
+	background: #3d4144;
+	margin: 0px;
+	min-height: 8vh;
+	display: flex;
+	align-items: center;
+}
+
+.navbar .logo-container a {
+	font-size: 25px;
+	text-decoration: none;
+	color: rgb(243, 243, 243);
+	font-weight: bold;
+	font-family: 'Poppins', sans-serif;
+	letter-spacing: 2px;
+	padding-left: 50px;
+
+}
+
+.room-details  {
+	width: 60%;
+	margin: auto;
+}
+
+.room-details thead {
+	background: rgb(160, 174, 180);
+}
+
+
+.room-details tbody tr:nth-child(odd){
+	background: rgb(229, 230, 209);
+}
+
+.room-details tbody tr:nth-child(even){
+	background: rgb(167, 168, 152);
+}
+
+.room-details th, td {
+	padding:8px;
+	
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<nav class = "navbar">
+	<div class = "logo-container">
+	<a href = "/"> CANADA HOTEL</a>	
+	</div>
+</nav>
+
+
+<h2>Add a Room</h2>
+<form action="#" th:action="@{/addaroom}" th:object="${room}" method="post">
+<p><input type="text" th:field="*{roomNumber}" placeholder="Room Number"></p>
+<p><input type="text" th:field="*{roomName}" placeholder="Room Name"></p>
+<p><input type="text" th:field="*{bedInfo}" placeholder="Bed Info"></p>
+
+<input type="submit">
+
+</form>
+
+</body>
+</html>

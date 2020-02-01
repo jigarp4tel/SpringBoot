@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h3>EDIT ROOM DETAILS</h3>
+
+<form action="#"
+  th:action="@{/update}"
+  th:object="${room}"
+  method="post">
+
+    <input type="text" th:field="*{roomName}" id="roomName" placeholder="Room Name">    
+    <input type="text" th:field="*{roomNumber}" id="roomNumber" placeholder="Room Name">  
+    <input type="text" th:field="*{bedInfo}" id = "bedInfo" placeholder="Bed Info">
+    
+    <input type="hidden" id="id" th:field="*{roomId}">
+    
+    <input type="submit" value = "Update">
+</form>
+
+</body>
+</html>

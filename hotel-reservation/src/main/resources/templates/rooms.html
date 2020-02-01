@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+	<nav class="navbar">
+		<div class="logo-container">
+			<a href="/"> CANADA HOTEL</a>
+		</div>
+	</nav>
+
+	<h4>ROOM DETAILS</h4>
+
+	<form action="" method="get">
+		<input type="text" name="roomnumber" placeholder="Room Number">
+		<input type="submit" value="Search">
+	</form>
+
+	<table class="room-details">
+		<thead>
+			<tr>
+				<td>Room Number</td>
+				<td>Room Name</td>
+				<td>Bed Info</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="room : ${roomDetails}">
+				<td th:text="${room.roomNumber}">Room Number</td>
+				<td th:text="${room.roomName}">Room Name</td>
+				<td th:text="${room.bedInfo}">Bed Info</td>
+				<td><a
+					th:href="@{/delete/{roomId}(roomId=${room.roomId})}">Delete</a></td>
+				<td><a th:href="@{/edit/{roomId}(roomId=${room.roomId})}">Edit</a></td>
+			</tr>
+		</tbody>
+
+
+	</table>
+
+</body>
+</html>
