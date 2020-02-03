@@ -7,7 +7,7 @@
 	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
 }
-nav {
+header {
 	background: #3d4144;
 	margin: 0px;
 	min-height: 8vh;
@@ -15,16 +15,93 @@ nav {
 	align-items: center;
 }
 
-.navbar .logo-container a {
+header .logo-container {
+	padding: 10px 0px 10px 30px;
+}
+
+header .logo-container a {
 	font-size: 25px;
 	text-decoration: none;
 	color: rgb(243, 243, 243);
 	font-weight: bold;
 	font-family: 'Poppins', sans-serif;
 	letter-spacing: 2px;
-	padding-left: 50px;
-
 }
+
+
+.logo-container img {
+	height:38px;
+	float: left;
+	
+}
+
+.logo-container .logo-default {
+	padding-left:10px;
+	float:right;
+}
+
+nav {
+	width:100%;
+	height:60px;
+	background-color: #effcef;
+}
+
+nav ul {
+	float: left;
+}
+
+nav ul li {
+	float: left;
+	list-style: none;
+	position:relative;
+}
+
+nav ul li a {
+	display: block;
+	padding: 16px 14px;
+	text-decoration: none;
+	color: #222;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+nav ul li ul {
+	display:none;
+	position:absolute;
+	background-color: #effcef;
+	padding: 10px;
+	border-radius: 0px 0px 4px 4px;
+}
+
+nav ul li:hover ul{
+	display:block;
+}
+
+nav ul li ul li {
+    width: 160px;
+    border-radius: 4px;
+}
+
+nav ul li ul li a{
+    padding: 8px 12px;
+}
+
+nav ul li ul li a:hover{
+    color: #6c7b95;
+}
+
+i {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3.5px;
+}
+
+.down-arrow {
+	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+}
+
 
 .room-details  {
 	width: 60%;
@@ -46,5 +123,4 @@ nav {
 
 .room-details th, td {
 	padding:8px;
-	
 }
