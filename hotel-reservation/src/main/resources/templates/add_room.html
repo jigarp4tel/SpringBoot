@@ -6,23 +6,49 @@
 <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
+	<header>
+		<div class="logo-container">
+			<a href="index.html"> <img alt="logo" src="img/logo.png"> <span
+				class="logo-default">CANADA HOTEL</span>
+			</a>
+		</div>
 
-<nav class = "navbar">
-	<div class = "logo-container">
-	<a href = "/"> CANADA HOTEL</a>	
-	</div>
-</nav>
+		<form class="search-form-header" action="#">
+			<div>
+				<input type="text" placeholder="Search..  not yet implemented">
+			</div>
+		</form>
+	</header>
+	<nav>
+		<ul>
+			<li><a href="/reservations">Reservation</a></li>
+			<li><a href="/rooms">Rooms&nbsp; <i class="down-arrow"></i></a>
+				<ul>
+					<li><a href="/addroom">Add Room</a></li>
+					<li><a href="/rooms">View All Rooms</a></li>
+					<li><a href="#">Edit Room</a></li>
+				</ul></li>
 
+		</ul>
 
-<h2>Add a Room</h2>
-<form action="#" th:action="@{/addaroom}" th:object="${room}" method="post">
-<p><input type="text" th:field="*{roomNumber}" placeholder="Room Number"></p>
-<p><input type="text" th:field="*{roomName}" placeholder="Room Name"></p>
-<p><input type="text" th:field="*{bedInfo}" placeholder="Bed Info"></p>
+	</nav>
 
-<input type="submit">
+	<h2>Add a Room</h2>
+	<form action="#" th:action="@{/addaroom}" th:object="${room}"
+		method="post">
+		<p>
+			<input type="text" th:field="*{roomNumber}" placeholder="Room Number">
+		</p>
+		<p>
+			<input type="text" th:field="*{roomName}" placeholder="Room Name">
+		</p>
+		<p>
+			<input type="text" th:field="*{bedInfo}" placeholder="Bed Info">
+		</p>
 
-</form>
+		<input type="submit">
+
+	</form>
 
 </body>
 </html>

@@ -56,22 +56,18 @@ public class RoomWebController {
 
 	@GetMapping("/edit/{roomId}")
 	public ModelAndView showEditRoomForm(@PathVariable("roomId") long roomId) {
-		System.out.println("IN GET METHOD");
 
 		ModelAndView mav = new ModelAndView("edit_room");
 		Room room = this.roomService.findById(roomId);
-		System.out.println("In GET Method" + room);
 		mav.addObject("room", room);
 		return mav;
 	}
 
 	@PostMapping("/update")
-	public String editRoom(@ModelAttribute Room room) {
+	public String editRoom(@ModelAttribute Room room, Model model) {
 
-		System.out.println("IN POST METHOD");
-		System.out.println(room);
 		this.roomService.updateRoom(room);
-		// model.addAttribute("rooms", this.roomService.findAllRooms());
+		model.addAttribute("rooms", this.roomService.findAllRooms());
 		return "redirect:/rooms";
 	}
 

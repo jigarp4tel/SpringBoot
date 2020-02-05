@@ -33,17 +33,6 @@ public class HotelReservationApplication {
 	 * }
 	 */
 	
-	@RestController
-	@RequestMapping("/guests")
-	public class GuestController {
-		
-		@Autowired
-		private GuestRepository guestRepository;
-		
-		@GetMapping
-		public Iterable<Guest> getGuests(){
-			return this.guestRepository.findAll();
-		}
-	}
+	
 
 }

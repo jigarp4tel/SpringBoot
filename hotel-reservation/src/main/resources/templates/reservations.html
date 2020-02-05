@@ -6,10 +6,32 @@
 <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
-<nav class = "navbar">
-	<div class = "logo-container">
-	<a href = "/"> CANADA HOTEL</a>	
-	</div>
+<header>
+		<div class="logo-container">
+			<a href="index.html"> <img alt="logo" src="img/logo.png"> <span
+				class="logo-default">CANADA HOTEL</span>
+			</a>
+		</div>
+
+		<form class="search-form-header" action="#">
+			<div>
+				<input type="text" placeholder="Search..  not yet implemented">
+			</div>
+		</form>
+	</header>
+	<nav>
+<ul>
+<li><a href="/reservations">Reservation</a></li>
+<li><a href="/rooms">Rooms&nbsp; <i class="down-arrow"></i></a>
+	<ul>
+	<li><a href="/addroom">Add Room</a></li>
+	<li><a href="/rooms">View All Rooms</a></li>
+	<li><a href="#">Edit Room</a></li>
+	</ul>
+</li>
+
+</ul>
+
 </nav>
 
 <h4>RESERVATIONS</h4>
