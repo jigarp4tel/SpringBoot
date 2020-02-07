@@ -121,24 +121,25 @@ i {
 }
 
 
-.room-details  {
-	width: 60%;
+.details-table  {
+	width: 80%;
 	margin: auto;
+	border: 1px solid;
 }
 
-.room-details thead {
+.details-table thead {
 	background: rgb(160, 174, 180);
 }
 
 
-.room-details tbody tr:nth-child(odd){
+.details-table tbody tr:nth-child(odd){
 	background: rgb(229, 230, 209);
 }
 
-.room-details tbody tr:nth-child(even){
+.details-table tbody tr:nth-child(even){
 	background: rgb(167, 168, 152);
 }
 
-.room-details th, td {
+.details-table th, td {
 	padding:8px;
 }

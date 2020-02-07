@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="css/site.css">
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="css/site.css">
 </head>
+
 <body>
 	<header>
 		<div class="logo-container">
-			<a href="index.html"> <img alt="logo" src="img/logo.png"> <span
-				class="logo-default">CANADA HOTEL</span>
+			<a href="index.html"> <img alt="logo" src="img/logo.png"> <span class="logo-default">CANADA HOTEL</span>
 			</a>
 		</div>
 
@@ -20,19 +21,19 @@
 		</form>
 	</header>
 	<nav>
-<ul>
-<li><a href="/reservations">Reservation</a></li>
-<li><a href="/rooms">Rooms&nbsp; <i class="down-arrow"></i></a>
-	<ul>
-	<li><a href="/addroom">Add Room</a></li>
-	<li><a href="/rooms">View All Rooms</a></li>
-	<li><a href="#">Edit Room</a></li>
-	</ul>
-</li>
+		<ul>
+			<li><a href="/reservations">Reservation</a></li>
+			<li><a href="/rooms">Rooms&nbsp; <i class="down-arrow"></i></a>
+				<ul>
+					<li><a href="/addroom">Add Room</a></li>
+					<li><a href="/rooms">View All Rooms</a></li>
+					<li><a href="#">Edit Room</a></li>
+				</ul>
+			</li>
 
-</ul>
+		</ul>
 
-</nav>
+	</nav>
 
 	<h4>ROOM DETAILS</h4>
 
@@ -40,27 +41,30 @@
 		<input type="text" name="roomnumber" placeholder="Room Number">
 		<input type="submit" value="Search">
 	</form>
+	<div class="card-box">
+		<table class="details-table">
+			<thead>
+				<tr>
+					<td>Room Number</td>
+					<td>Room Name</td>
+					<td>Bed Info</td>
+					<td colspan="2">Action</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="room : ${roomDetails}">
+					<td th:text="${room.roomNumber}">Room Number</td>
+					<td th:text="${room.roomName}">Room Name</td>
+					<td th:text="${room.bedInfo}">Bed Info</td>
+					<td><a th:href="@{/delete/{roomId}(roomId=${room.roomId})}">Delete</a></td>
+					<td><a th:href="@{/edit/{roomId}(roomId=${room.roomId})}">Edit</a></td>
+				</tr>
+			</tbody>
 
-	<table class="room-details">
-		<thead>
-			<tr>
-				<td>Room Number</td>
-				<td>Room Name</td>
-				<td>Bed Info</td>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="room : ${roomDetails}">
-				<td th:text="${room.roomNumber}">Room Number</td>
-				<td th:text="${room.roomName}">Room Name</td>
-				<td th:text="${room.bedInfo}">Bed Info</td>
-				<td><a th:href="@{/delete/{roomId}(roomId=${room.roomId})}">Delete</a></td>
-				<td><a th:href="@{/edit/{roomId}(roomId=${room.roomId})}">Edit</a></td>
-			</tr>
-		</tbody>
 
-
-	</table>
+		</table>
+	</div>
 
 </body>
+
 </html>
