@@ -4,9 +4,9 @@
 * {
 	margin:0px;
 	padding: 0px;
-	box-sizing: border-box;
 	font-family: 'Poppins', sans-serif;
 }
+
 header {
 	background: #3d4144;
 	margin: 0px;
@@ -40,23 +40,28 @@ header .logo-container a {
 	float:right;
 }
 
-.search-form-header {
+.search-box-header {
 	margin-left:20px;
 	border-radius: 30px;
-	border: 1px solid #bdbdbd;
+	background: #485460;
+	height: 20px;
+	padding: 8px;
+
 	
 }
 
-.search-form-header input[type="text"]{
-	float: left;
-	border: 0;
-	border-radius: 30px;
-	background-color: transparent;
-	padding: 7px 12px;
-}
-.search-form-header input[type="text"]:focus{
+.search-header-txt {
+	background: none;
+	border: none;
 	outline: none;
+	color: white;
+	padding: 0;
+	float: left;
+	line-height: 20px;
+	font-size: 15px;
+	width: 300px;
 }
+
 
 nav {
 	width:100%;
@@ -108,17 +113,60 @@ nav ul li ul li a:hover{
     color: #6c7b95;
 }
 
-i {
-  border: solid black;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3.5px;
-}
 
 .down-arrow {
+	border: solid black;
+	border-width: 0 3px 3px 0;
+	display: inline-block;
+	padding: 3.5px;
 	transform: rotate(45deg);
 	-webkit-transform: rotate(45deg);
 }
+
+.search-box {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	background: #7f8fa6;
+	height: 40px;
+	border-radius: 40px;
+	padding: 10px;
+}
+
+.search-box:hover > .search-txt {
+	width: 240px;
+	padding: 0 6px;
+}
+.search-box:hover > .search-btn {
+	background-color: white;
+}
+
+.search-btn{
+	color: #e84118;
+	float: right;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: #7f8fa6;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.search-txt {
+	border:none;
+	background: none;
+	outline: none;
+	float:left;
+	padding: 0;
+	color: white;
+	font-size: 16px;
+	transition: 0.4s;
+	line-height: 40px;
+	width: 0px;
+}
+
 
 
 .details-table  {
@@ -130,7 +178,6 @@ i {
 .details-table thead {
 	background: rgb(160, 174, 180);
 }
-
 
 .details-table tbody tr:nth-child(odd){
 	background: rgb(229, 230, 209);

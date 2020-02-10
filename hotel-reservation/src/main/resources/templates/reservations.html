@@ -1,60 +1,66 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<link rel="stylesheet" href="css/site.css">
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="css/site.css">
+	<script src="https://kit.fontawesome.com/e379a698ba.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-<header>
+	<header>
 		<div class="logo-container">
-			<a href="index.html"> <img alt="logo" src="img/logo.png"> <span
-				class="logo-default">CANADA HOTEL</span>
+			<a href="index.html"> <img alt="logo" src="img/logo.png"> <span class="logo-default">CANADA HOTEL</span>
 			</a>
 		</div>
 
-		<form class="search-form-header" action="#">
-			<div>
-				<input type="text" placeholder="Search..  not yet implemented">
-			</div>
-		</form>
+
+		<div class="search-box-header">
+				<input class = "search-header-txt" type=" text" placeholder="Search..  not yet implemented">
+		</div>
+
 	</header>
+
 	<nav>
-<ul>
-<li><a href="/reservations">Reservation</a></li>
-<li><a href="/rooms">Rooms&nbsp; <i class="down-arrow"></i></a>
-	<ul>
-	<li><a href="/addroom">Add Room</a></li>
-	<li><a href="/rooms">View All Rooms</a></li>
-	<li><a href="#">Edit Room</a></li>
-	</ul>
-</li>
+		<ul>
+			<li><a href="/reservations">Reservation</a></li>
+			<li><a href="/rooms">Rooms&nbsp; <i class="down-arrow"></i></a>
+				<ul>
+					<li><a href="/addroom">Add Room</a></li>
+					<li><a href="/rooms">View All Rooms</a></li>
+					<li><a href="#">Edit Room</a></li>
+				</ul>
+			</li>
 
-</ul>
+		</ul>
 
-</nav>
+	</nav>
 
-<h4>RESERVATIONS</h4>
+	<h4>RESERVATIONS</h4>
 
-<form action="" method="get">
-	<input type="text" name="date">
-	<input type="submit">
-</form>
+	<div class="search-box">
+		<input class="search-txt" type="text" name="" placeholder="Search">
+		<a class="search-btn" href="#"><i class="fas fa-search"></i></a>
+	</div>
+	<div>
+		<table>
+			<tr>
+				<td>Room</td>
+				<td>Room Name</td>
+				<td>Guest</td>
+			</tr>
 
-	<table>
-		<tr>
-		<td>Room</td>
-		<td>Room Name</td>
-		<td>Guest</td>
-		</tr>
-		
-		<tr th:each="roomReservation: ${roomReservations}">
-		<td th:text="${roomReservation.roomNumber}">Room No</td>
-		<td th:text="${roomReservation.roomName}">Room Name</td>
-		<td th:text="${roomReservation.lastName}!=null? ${roomReservation.lastName} + ',' + ${roomReservation.firstName} : 'VACANT'">Full Name</td>
-		</tr>
-	
-	</table>
+			<tr th:each="roomReservation: ${roomReservations}">
+				<td th:text="${roomReservation.roomNumber}">Room No</td>
+				<td th:text="${roomReservation.roomName}">Room Name</td>
+				<td
+					th:text="${roomReservation.lastName}!=null? ${roomReservation.lastName} + ',' + ${roomReservation.firstName} : 'VACANT'">
+					Full Name</td>
+			</tr>
 
+		</table>
+	</div>
 </body>
+
 </html>
