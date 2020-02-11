@@ -5,36 +5,17 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link rel="stylesheet" href="css/site.css">
+	<script src="https://kit.fontawesome.com/e379a698ba.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
+<script>
+$(function () {
+    $("#header").load("header.html");
+});
+</script>
 
 <body>
-	<header>
-		<div class="logo-container">
-			<a href="index.html"> <img alt="logo" src="img/logo.png"> <span class="logo-default">CANADA HOTEL</span>
-			</a>
-		</div>
-
-		<form class="search-form-header" action="#">
-			<div>
-				<input type="text" placeholder="Search..  not yet implemented">
-			</div>
-		</form>
-	</header>
-	<nav>
-		<ul>
-			<li><a href="/reservations">Reservation</a></li>
-			<li><a href="/rooms">Rooms&nbsp; <i class="down-arrow"></i></a>
-				<ul>
-					<li><a href="/addroom">Add Room</a></li>
-					<li><a href="/rooms">View All Rooms</a></li>
-					<li><a href="#">Edit Room</a></li>
-				</ul>
-			</li>
-
-		</ul>
-
-	</nav>
-
+	<div id="header"></div>
 	<h4>ROOM DETAILS</h4>
 
 	<form action="" method="get">

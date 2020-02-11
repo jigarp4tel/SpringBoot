@@ -1,42 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Canada Hotel</title>
-<link rel="stylesheet" type="text/css" href="css/site.css">
+	<meta charset="UTF-8">
+	<title>Guests</title>
+	<link rel="stylesheet" href="css/site.css">
+	<script src="https://kit.fontawesome.com/e379a698ba.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
+<script>
+$(function () {
+    $("#header").load("header.html");
+});
+</script>
+
 <body>
+	<div id="header"></div>
 
-<header>
-		<div class="logo-container">
-			<a href="index.html"> <img alt="logo" src="img/logo.png"> <span
-				class="logo-default">CANADA HOTEL</span>
-			</a>
-		</div>
-
-		<form class="search-form-header" action="#">
-			<div>
-				<input type="text" placeholder="Search..  not yet implemented">
-			</div>
-		</form>
-	</header>
-	<nav>
-<ul>
-<li><a href="/reservations">Reservation</a></li>
-<li><a href="/rooms">Rooms&nbsp; <i class="down-arrow"></i></a>
-	<ul>
-	<li><a href="/addroom">Add Room</a></li>
-	<li><a href="/rooms">View All Rooms</a></li>
-	<li><a href="#">Edit Room</a></li>
-	</ul>
-</li>
-<li><a href="/guests">Guests</a></li>
-
-</ul>
-
-</nav>
-
-<h3>GUESTS DETAILS</h3>
+	<h3>GUESTS DETAILS</h3>
 
 	<table class="details-table">
 		<thead>
@@ -53,8 +33,8 @@
 				<td th:text="${guest.emailAddress}">Email Address</td>
 				<td th:text="${guest.country}">Country</td>
 				<td th:text="${guest.phoneNumber}">Phone Number</td>
-				
-<!-- 				<td><a th:href="@{/delete/{roomId}(roomId=${room.roomId})}">Delete</a></td>
+
+				<!-- 				<td><a th:href="@{/delete/{roomId}(roomId=${room.roomId})}">Delete</a></td>
 				<td><a th:href="@{/edit/{roomId}(roomId=${room.roomId})}">Edit</a></td> -->
 			</tr>
 		</tbody>

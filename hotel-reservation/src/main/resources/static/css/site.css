@@ -1,10 +1,16 @@
 @charset "ISO-8859-1";
-@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+@import
+	url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 
 * {
-	margin:0px;
+	margin: 0px;
 	padding: 0px;
 	font-family: 'Poppins', sans-serif;
+}
+
+body {
+	background-color: #e84118;
 }
 
 header {
@@ -28,26 +34,22 @@ header .logo-container a {
 	letter-spacing: 2px;
 }
 
-
 .logo-container img {
-	height:38px;
+	height: 38px;
 	float: left;
-	
 }
 
 .logo-container .logo-default {
-	padding-left:10px;
-	float:right;
+	padding-left: 10px;
+	float: right;
 }
 
 .search-box-header {
-	margin-left:20px;
+	margin-left: 20px;
 	border-radius: 30px;
 	background: #485460;
 	height: 20px;
 	padding: 8px;
-
-	
 }
 
 .search-header-txt {
@@ -62,10 +64,43 @@ header .logo-container a {
 	width: 300px;
 }
 
+.search-box-resrv {
+	border-radius: 30px;
+	background: #485460;
+	height: 40px;
+	padding: 8px;
+	width: 300px;
+	margin-left: 50%;
+	transform: translate(-50%);
+}
+
+.search-resv-txt {
+	background: none;
+	border: none;
+	outline: none;
+	color: white;
+	padding: 0;
+	float: left;
+	line-height: 40px;
+	font-size: 15px;
+}
+
+.search-btn {
+	color: #e84118;
+	float: right;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: none;
+}
 
 nav {
-	width:100%;
-	height:60px;
+	width: 100%;
+	height: 60px;
 	background-color: #effcef;
 }
 
@@ -76,7 +111,7 @@ nav ul {
 nav ul li {
 	float: left;
 	list-style: none;
-	position:relative;
+	position: relative;
 }
 
 nav ul li a {
@@ -89,30 +124,29 @@ nav ul li a {
 }
 
 nav ul li ul {
-	display:none;
-	position:absolute;
+	display: none;
+	position: absolute;
 	background-color: #effcef;
 	padding: 10px;
 	border-radius: 0px 0px 4px 4px;
 }
 
-nav ul li:hover ul{
-	display:block;
+nav ul li:hover ul {
+	display: block;
 }
 
 nav ul li ul li {
-    width: 160px;
-    border-radius: 4px;
+	width: 160px;
+	border-radius: 4px;
 }
 
-nav ul li ul li a{
-    padding: 8px 12px;
+nav ul li ul li a {
+	padding: 8px 12px;
 }
 
-nav ul li ul li a:hover{
-    color: #6c7b95;
+nav ul li ul li a:hover {
+	color: #6c7b95;
 }
-
 
 .down-arrow {
 	border: solid black;
@@ -127,38 +161,27 @@ nav ul li ul li a:hover{
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%,-50%);
+	transform: translate(-50%, -50%);
 	background: #7f8fa6;
 	height: 40px;
 	border-radius: 40px;
 	padding: 10px;
 }
 
-.search-box:hover > .search-txt {
+.search-box:hover>.search-txt {
 	width: 240px;
 	padding: 0 6px;
 }
-.search-box:hover > .search-btn {
+
+.search-box:hover>.search-btn {
 	background-color: white;
 }
 
-.search-btn{
-	color: #e84118;
-	float: right;
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	background: #7f8fa6;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
 .search-txt {
-	border:none;
+	border: none;
 	background: none;
 	outline: none;
-	float:left;
+	float: left;
 	padding: 0;
 	color: white;
 	font-size: 16px;
@@ -167,9 +190,7 @@ nav ul li ul li a:hover{
 	width: 0px;
 }
 
-
-
-.details-table  {
+.details-table {
 	width: 80%;
 	margin: auto;
 	border: 1px solid;
@@ -179,14 +200,14 @@ nav ul li ul li a:hover{
 	background: rgb(160, 174, 180);
 }
 
-.details-table tbody tr:nth-child(odd){
+.details-table tbody tr:nth-child(odd) {
 	background: rgb(229, 230, 209);
 }
 
-.details-table tbody tr:nth-child(even){
+.details-table tbody tr:nth-child(even) {
 	background: rgb(167, 168, 152);
 }
 
 .details-table th, td {
-	padding:8px;
+	padding: 8px;
 }
