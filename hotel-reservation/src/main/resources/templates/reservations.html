@@ -2,55 +2,89 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="css/site.css">
-<script src="https://kit.fontawesome.com/e379a698ba.js"
-	crossorigin="anonymous"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Reservations</title>
+
+	<script src="https://kit.fontawesome.com/e379a698ba.js" crossorigin="anonymous"></script>
+
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<script src="https://kit.fontawesome.com/e379a698ba.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<script>
-	$(function() {
-		$("#header").load("header.html");
-	});
-</script>
 
 <body>
-	<div id="header"></div>
+	<div class="sticky-top">
+		<nav class="navbar navbar-dark bg-dark">
+			<a class="navbar-brand" href="/"><img src="/img/logo.png"> Canada Hotel</a>
+		</nav>
 
-	<h4>RESERVATIONS</h4>
+		<nav class="navbar navbar-expand-sm bg-1 navbar-light">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="/reservations">Reservations</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/guests">Guests</a>
+				</li>
 
-	<!-- 	<div class="search-box">
-		<input class="search-txt" type="text" name="" placeholder="Search">
-		<a class="search-btn" href="#"><i class="fas fa-search"></i></a>
-	</div> -->
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Rooms</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="/addroom">Add Room</a>
+						<a class="dropdown-item" href="/rooms">View All Rooms</a>
+						<a class="dropdown-item" href="#">Edit Room</a>
 
-	<div class="search-box-resrv">
-		<form action="" method="get">
-			<input class="search-resv-txt" type="date"
-				placeholder="Select Date" name="date">
-			<button class="search-btn" type="submit"><i class="fas fa-search"></i></a></button>
-		</form>
+
+					</div>
+				</li>
+			</ul>
+		</nav>
 	</div>
-	<div>
-		<table>
-			<tr>
-				<td>Room</td>
-				<td>Room Name</td>
-				<td>Guest</td>
-			</tr>
+	<!-- Display reservations and search by date -->
+	<section>
 
-			<tr th:each="roomReservation: ${roomReservations}">
-				<td th:text="${roomReservation.roomNumber}">Room No</td>
-				<td th:text="${roomReservation.roomName}">Room Name</td>
-				<td
-					th:text="${roomReservation.lastName}!=null? ${roomReservation.lastName} + ',' + ${roomReservation.firstName} : 'VACANT'">
-					Full Name</td>
-			</tr>
+		<div class="container">
+			<div class="page-header text-center">
+				<h1>Reservations</h1>
+			</div>
+			
+			<form method="GET">
+				<div class="input-group">
 
-		</table>
-	</div>
+					<input class="form-control" type="date" placeholder="Select Date" name="date">
+
+					<div class="input-group-append">
+						<button class="btn btn-success" type="submit"><i class="fas fa-search"></i></a></button>
+					</div>
+
+				</div>
+			</form>
+			<br>
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Room</th>
+						<th>Room Name</th>
+						<th>Guest</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="roomReservation: ${roomReservations}">
+						<td th:text="${roomReservation.roomNumber}">Room No</td>
+						<td th:text="${roomReservation.roomName}">Room Name</td>
+						<td
+							th:text="${roomReservation.lastName}!=null? ${roomReservation.lastName} + ',' + ${roomReservation.firstName} : 'VACANT'">
+							Full Name</td>
+					</tr>
+				</tbody>
+
+			</table>
+		</div>
+	</section>
 </body>
 
 </html>

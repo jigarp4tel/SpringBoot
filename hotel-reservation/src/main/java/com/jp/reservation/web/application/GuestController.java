@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.jp.reservation.business.service.GuestService;
-import com.jp.reservation.data.entity.Guest;
+
 
 @Controller
 public class GuestController {
