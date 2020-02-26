@@ -14,6 +14,7 @@ import com.jp.reservation.business.service.ReservationService;
 import com.jp.reservation.data.entity.Reservation;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 
 @Controller
@@ -34,6 +35,14 @@ public class ReservationController {
 	@GetMapping(value="/add_reservation")
 	public String getReservationForm(Reservation reservation) {
 		return "add_reservation";
+	}
+	
+
+	@RequestMapping(value="/addareservation", method=RequestMethod.POST)
+	public String addReservation(@ModelAttribute Reservation reservation) {
+		this.reservationService.addReservation(reservation);
+
+		return "reservations";
 	}
 	
 

@@ -20,7 +20,7 @@ public class GuestController {
 		
 			
 		model.addAttribute("guestDetails", this.guestService.getGuest());
-		
+		System.out.println(this.guestService.getGuest());
 		return "guests";
 	}
 	

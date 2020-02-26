@@ -26,6 +26,7 @@ public class RoomWebController {
 	@RequestMapping(value = "/rooms", method = RequestMethod.GET)
 	public String getRoom(@RequestParam(value = "roomnumber", required = false) String roomNumber, Model model) {
 		List<Room> roomList = this.roomService.getRoomByRoomNumber(roomNumber);
+		System.out.println(roomList);
 		model.addAttribute("roomDetails", roomList);
 
 		return "rooms";

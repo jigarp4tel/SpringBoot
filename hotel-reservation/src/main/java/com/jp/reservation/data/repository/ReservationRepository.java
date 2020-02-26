@@ -10,5 +10,7 @@ import com.jp.reservation.data.entity.Reservation;
 public interface ReservationRepository extends CrudRepository<Reservation, Long>{
 	
 	List<Reservation> findByReservationDate(Date date);
+	
+	
 
 }

@@ -83,4 +83,8 @@ public class ReservationService {
 
 	}
 
+	public void addReservation(Reservation reservation) {
+		this.reservationRepository.save(reservation);
+	}
+
 }

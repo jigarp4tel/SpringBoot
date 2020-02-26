@@ -106,10 +106,13 @@ public class Guest {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	
-	
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "Guest [address=" + address + ", country=" + country + ", emailAddress=" + emailAddress + ", firstName="
+				+ firstName + ", guestId=" + guestId + ", lastName=" + lastName + ", phoneNumber=" + phoneNumber
+				+ ", state=" + state + "]";
+	}
+		
 
 }
