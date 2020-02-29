@@ -20,7 +20,7 @@ public class Reservation {
 	
 	@Id
 	@Column(name="RESERVATION_ID")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long reservationId;
 	
 	@Column(name="ROOM_ID")

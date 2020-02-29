@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import com.jp.reservation.business.domain.RoomReservation;
 import com.jp.reservation.business.service.ReservationService;
 import com.jp.reservation.data.entity.Reservation;
+
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,6 +25,7 @@ public class ReservationController {
 	@Autowired
 	private ReservationService reservationService;
 
+
 	@RequestMapping(value = "/reservations" , method = RequestMethod.GET)
 	public String getReservation(@RequestParam(value = "date", required = false) String dateString, Model model) {
 
@@ -33,16 +36,22 @@ public class ReservationController {
 	}
 
 	@GetMapping(value="/add_reservation")
-	public String getReservationForm(Reservation reservation) {
+	public String getReservationForm(Reservation reservation, Model model) {
+
+		model.addAttribute("roomDetails", this.reservationService.getRooms());
+		model.addAttribute("guestDetails", this.reservationService.getGuests());
 		return "add_reservation";
+		
 	}
 	
 
 	@RequestMapping(value="/addareservation", method=RequestMethod.POST)
 	public String addReservation(@ModelAttribute Reservation reservation) {
+
+		System.out.println("IN POST METHOD");
 		this.reservationService.addReservation(reservation);
 
-		return "reservations";
+		return "redirect:/reservations";
 	}
 	
 

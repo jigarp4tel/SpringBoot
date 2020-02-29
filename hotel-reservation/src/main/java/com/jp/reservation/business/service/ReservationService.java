@@ -87,4 +87,12 @@ public class ReservationService {
 		this.reservationRepository.save(reservation);
 	}
 
+	public Iterable<Room> getRooms(){
+		return this.roomRepository.findAll();
+	}
+
+	public Iterable<Guest> getGuests(){
+		return this.guestRepository.findAll();
+	}
+	
 }
