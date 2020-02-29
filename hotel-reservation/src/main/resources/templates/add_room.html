@@ -45,22 +45,28 @@
 		</nav>
 	</div>
 
-	<div class="container">
-		<h2>Add a Room</h2>
-		<form action="#" th:action="@{/addaroom}" th:object="${room}" method="post">
-			<p>
-				<input type="text" th:field="*{roomNumber}" placeholder="Room Number">
-			</p>
-			<p>
-				<input type="text" th:field="*{roomName}" placeholder="Room Name">
-			</p>
-			<p>
-				<input type="text" th:field="*{bedInfo}" placeholder="Bed Info">
-			</p>
+	<div class="container mt-5 w-50">
+		<div class="card">
+			<div class="card-header bg-dark">
+				<h2 class="text-light">Add a Room</h2>
+			</div>
+			<div class="card-body">
+				<form action="#" th:action="@{/addaroom}" th:object="${room}" method="post">
+					<div class="form-group">
+						<input class="form-control" type="text" th:field="*{roomNumber}" placeholder="Room Number">
+					</div>
+					<div class="form-group">
+						<input class="form-control" type="text" th:field="*{roomName}" placeholder="Room Name">
+					</div>
+					<div class="form-group">
+						<input class="form-control" type="text" th:field="*{bedInfo}" placeholder="Bed Info">
+					</div>
 
-			<input type="submit">
+					<button class="btn btn-secondary" type="submit">Submit</button>
 
-		</form>
+				</form>
+			</div>
+		</div>
 	</div>
 </body>
 

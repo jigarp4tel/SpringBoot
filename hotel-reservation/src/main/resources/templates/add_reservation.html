@@ -44,40 +44,46 @@
             </ul>
         </nav>
     </div>
+    <br>
 
     <div class="container">
-        <h1>Add Reservation</h1>
-    </div>
-
-    <div class="container">
-        <form action="#" method="POST" th:action="@{/addareservation}" th:object="${reservation}">
-            <div class="form-group">
-                Guest Name:
-                <select th:field="*{guestId}" class="custom-select">
-                    <option th:each="guest : ${guestDetails}" th:value="${guest.guestId}"
-                        th:text="${guest.firstName} + ' ' + ${guest.lastName}"></option>
-                </select>
+        <div class="card">
+            <div class="card-header bg-dark">
+                <h2 class="text-light">Add Reservation</h2>
             </div>
-            
-            <div class="form-group">
-                <label for="date">Date:</label>
-                <input type="date" th:field="*{reservationDate}" placeholder="Date" class="form-control" id="date">
+            <div class="card-body">
+                <form action="#" method="POST" th:action="@{/addareservation}" th:object="${reservation}">
+                    <div class="form-group">
+                        Guest Name:
+                        <select th:field="*{guestId}" class="custom-select form-control">
+                            <option th:each="guest : ${guestDetails}" th:value="${guest.guestId}"
+                                th:text="${guest.firstName} + ' ' + ${guest.lastName}"></option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">Date:</label>
+                        <input type="date" th:field="*{reservationDate}" placeholder="Date" class="form-control"
+                            id="date">
+                    </div>
+
+                    <!-- Dropdown for room Number selections -->
+                    <div class="form-group">Room Number
+                        <select th:field="*{roomId}" class="custom-select">
+
+                            <option th:each="room: ${roomDetails}" th:value="${room.roomId}"
+                                th:text="${room.roomNumber}" class="form-control">
+                                Select
+                                Room Number</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-secondary" type="submit">Submit</button>
+                </form>
+
             </div>
-            
-            <!-- Dropdown for room Number selections -->
-            <p>Room Number
-                <select th:field="*{roomId}" class="custom-select">
-                    <option th:each="room: ${roomDetails}" th:value="${room.roomId}" th:text="${room.roomNumber}">Select
-                        Room Number</option>
-                </select>
-            </p>
-            <button class="btn btn-secondary" type="submit">Submit</button>
-        </form>
 
-
+        </div>
     </div>
-
-
 </body>
 
 </html>
