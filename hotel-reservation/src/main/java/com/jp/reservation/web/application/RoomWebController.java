@@ -28,7 +28,6 @@ public class RoomWebController {
 		List<Room> roomList = this.roomService.getRoomByRoomNumber(roomNumber);
 		System.out.println(roomList);
 		model.addAttribute("roomDetails", roomList);
-
 		return "rooms";
 
 	}
@@ -43,7 +42,6 @@ public class RoomWebController {
 	public String addRoom(@ModelAttribute Room room) {
 
 		this.roomService.addRoom(room);
-//		model.addAttribute("rooms", this.roomService.findAllRooms());
 		return "add_room";
 	}
 

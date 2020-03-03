@@ -48,7 +48,6 @@ public class ReservationController {
 	@RequestMapping(value="/addareservation", method=RequestMethod.POST)
 	public String addReservation(@ModelAttribute Reservation reservation) {
 
-		System.out.println("IN POST METHOD");
 		this.reservationService.addReservation(reservation);
 
 		return "redirect:/reservations";
