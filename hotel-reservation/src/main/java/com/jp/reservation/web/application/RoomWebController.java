@@ -2,6 +2,7 @@ package com.jp.reservation.web.application;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -24,6 +25,7 @@ public class RoomWebController {
 	private RoomService roomService;
 
 	@RequestMapping(value = "/rooms", method = RequestMethod.GET)
+	@PreAuthorize("hasRole('ROLE_USER')")
 	public String getRoom(@RequestParam(value = "roomnumber", required = false) String roomNumber, Model model) {
 		List<Room> roomList = this.roomService.getRoomByRoomNumber(roomNumber);
 		System.out.println(roomList);
@@ -33,12 +35,14 @@ public class RoomWebController {
 	}
 
 	@GetMapping("/addroom")
+	@PreAuthorize("hasRole('ROLE_USER')")
 	public String showAddRoomForm(Room room) {
 		return "add_room"; // Redirects to addroom.html
 	}
 
 	// Method called from the addroom.html form
 	@RequestMapping(value = "/addaroom", method = RequestMethod.POST)
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public String addRoom(@ModelAttribute Room room) {
 
 		this.roomService.addRoom(room);
@@ -46,6 +50,7 @@ public class RoomWebController {
 	}
 
 	@GetMapping("/delete/{roomId}")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public String deleteRoom(@PathVariable("roomId") long roomId, Model model) {
 
 		this.roomService.deleteRoom(roomId);
@@ -54,6 +59,7 @@ public class RoomWebController {
 	}
 
 	@GetMapping("/edit/{roomId}")
+	@PreAuthorize("hasRole('ROLE_USER')")
 	public ModelAndView showEditRoomForm(@PathVariable("roomId") long roomId) {
 
 		ModelAndView mav = new ModelAndView("edit_room");
@@ -63,6 +69,7 @@ public class RoomWebController {
 	}
 
 	@PostMapping("/update")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public String editRoom(@ModelAttribute Room room, Model model) {
 
 		this.roomService.updateRoom(room);

@@ -1,5 +1,7 @@
 package com.jp.reservation.auth;
 
+import java.util.List;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -9,10 +11,13 @@ import org.springframework.stereotype.Service;
 public class HotelUserDetailsService implements UserDetailsService{
 
 	private final UserRepository userRepository;
+	private final AuthGroupRepository authGroupRepository;
+	
 
-	public HotelUserDetailsService(UserRepository userRepository) {
+	public HotelUserDetailsService(UserRepository userRepository, AuthGroupRepository authGroupRepository) {
 		super();
 		this.userRepository = userRepository;
+		this.authGroupRepository = authGroupRepository;
 	}
 
 	@Override
@@ -22,7 +27,8 @@ public class HotelUserDetailsService implements UserDetailsService{
 		if(null == user) {
 			throw new UsernameNotFoundException("cannot find username: " + username);
 		}
-		return new HotelUserPrincipal(user);
+		List<AuthGroup> authGroups = this.authGroupRepository.findByUsername(username);
+		return new HotelUserPrincipal(user,authGroups);
 	}
 
 }
