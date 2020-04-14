@@ -3,6 +3,7 @@ package com.jp.reservation.web.application;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,7 @@ public class ReservationController {
 
 
 	@RequestMapping(value = "/reservations" , method = RequestMethod.GET)
+	@PreAuthorize("hasRole('USER')")
 	public String getReservation(@RequestParam(value = "date", required = false) String dateString, Model model) {
 
 		List<RoomReservation> roomReservationsList = this.reservationService.getRoomReservationsByDate(dateString);
@@ -36,6 +38,7 @@ public class ReservationController {
 	}
 
 	@GetMapping(value="/add_reservation")
+	@PreAuthorize("hasRole('USER')")
 	public String getReservationForm(Reservation reservation, Model model) {
 
 		model.addAttribute("roomDetails", this.reservationService.getRooms());
@@ -46,6 +49,7 @@ public class ReservationController {
 	
 
 	@RequestMapping(value="/addareservation", method=RequestMethod.POST)
+	@PreAuthorize("hasRole('ADMIN')")
 	public String addReservation(@ModelAttribute Reservation reservation) {
 
 		this.reservationService.addReservation(reservation);
