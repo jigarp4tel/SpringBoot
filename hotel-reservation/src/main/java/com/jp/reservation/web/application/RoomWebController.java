@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,32 +20,40 @@ import com.jp.reservation.data.entity.Room;
 public class RoomWebController {
 
 	@Autowired
-	private RoomService roomService;
+	private final RoomService roomService;
 
-	@RequestMapping(value = "/rooms", method = RequestMethod.GET)
+	public RoomWebController(RoomService roomService) {
+		super();
+		this.roomService = roomService;
+	}
+
+	@GetMapping(value = "/rooms")
 	@PreAuthorize("hasRole('ROLE_USER')")
 	public String getRoom(@RequestParam(value = "roomnumber", required = false) String roomNumber, Model model) {
 		List<Room> roomList = this.roomService.getRoomByRoomNumber(roomNumber);
-		System.out.println(roomList);
 		model.addAttribute("roomDetails", roomList);
 		return "rooms";
 
 	}
+	
+
 
 	@GetMapping("/addroom")
-	@PreAuthorize("hasRole('ROLE_USER')")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public String showAddRoomForm(Room room) {
 		return "add_room"; // Redirects to addroom.html
 	}
 
-	// Method called from the addroom.html form
-	@RequestMapping(value = "/addaroom", method = RequestMethod.POST)
+	@PostMapping(value = "/addaroom")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public String addRoom(@ModelAttribute Room room) {
 
 		this.roomService.addRoom(room);
 		return "add_room";
 	}
+	
+	
+	
 
 	@GetMapping("/delete/{roomId}")
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -57,15 +63,25 @@ public class RoomWebController {
 		model.addAttribute("rooms", this.roomService.findAllRooms());
 		return "redirect:/rooms";
 	}
-
+	
+	
+	/*
+	 * @GetMapping("/edit/{roomId}")
+	 * 
+	 * @PreAuthorize("hasRole('ROLE_USER')") public ModelAndView
+	 * showEditRoomForm(@PathVariable("roomId") long roomId) {
+	 * 
+	 * Room room = this.roomService.findById(roomId); ModelAndView mav = new
+	 * ModelAndView("edit_room"); mav.addObject("room", room); return mav; }
+	 */
+	
+	
 	@GetMapping("/edit/{roomId}")
-	@PreAuthorize("hasRole('ROLE_USER')")
-	public ModelAndView showEditRoomForm(@PathVariable("roomId") long roomId) {
-
-		ModelAndView mav = new ModelAndView("edit_room");
-		Room room = this.roomService.findById(roomId);
-		mav.addObject("room", room);
-		return mav;
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	public String showEditRoomForm(@PathVariable("roomId") long roomId, Model model) {
+		Room room = this.roomService.findById(roomId);		
+		model.addAttribute("room", room);		
+		return "edit_room";
 	}
 
 	@PostMapping("/update")

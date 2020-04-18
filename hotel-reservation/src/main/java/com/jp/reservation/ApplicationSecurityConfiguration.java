@@ -13,6 +13,7 @@ import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMap
 import org.springframework.security.core.authority.mapping.SimpleAuthorityMapper;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.jp.reservation.auth.HotelUserDetailsService;
 
@@ -50,8 +51,21 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.csrf().disable().authorizeRequests().antMatchers("/", "/index", "/css/*", "/js/*", "/img/*").permitAll()
-				.anyRequest().authenticated().and().httpBasic();
+		http
+		.csrf().disable()
+		.authorizeRequests()
+		.antMatchers("/", "/index", "/css/*", "/js/*", "/img/*").permitAll()
+		.anyRequest().authenticated()
+		.and()
+		.formLogin()
+		.loginPage("/login").permitAll()
+		.and()
+		.logout().invalidateHttpSession(true)
+		.clearAuthentication(true)
+		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+		.logoutSuccessUrl("/logout-success").permitAll();
+		
+		
 	}
 
 	/*

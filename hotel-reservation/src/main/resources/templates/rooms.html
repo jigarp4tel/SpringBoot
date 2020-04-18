@@ -1,89 +1,64 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>Rooms</title>
-
-	<script src="https://kit.fontawesome.com/e379a698ba.js" crossorigin="anonymous"></script>
-
-
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-	<script src="https://kit.fontawesome.com/e379a698ba.js" crossorigin="anonymous"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+<meta charset="utf-8">
+<title>Rooms</title>
 </head>
 
 <body>
-	<div class="sticky-top">
-		<nav class="navbar navbar-dark bg-dark">
-			<a class="navbar-brand" href="/"><img src="/img/logo.png"> Canada Hotel</a>
-		</nav>
-
-		<nav class="navbar navbar-expand-sm bg-1 navbar-light">
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link" href="/reservations">Reservations</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/guests">Guests</a>
-				</li>
-
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Rooms</a>
-					<div class="dropdown-menu">
-						<a class="dropdown-item" href="/addroom">Add Room</a>
-						<a class="dropdown-item" href="/rooms">View All Rooms</a>
-						<a class="dropdown-item" href="#">Edit Room</a>
-
-
-					</div>
-				</li>
-			</ul>
-		</nav>
-	</div>
-	<div class="container">
-		<div class="page-header text-center">
-			<h1>Room Details</h1>
+	<div layout:fragment="content">
+	<br>
+		<div class="container">
+			<a class="btn btn-primary" href="/addroom">Add
+				Room</a>
 		</div>
 
-		<form method="GET">
-			<div class="input-group">
-
-				<input class="form-control" type="text" placeholder="Room Number" name="roomnumber">
-
-				<div class="input-group-append">
-					<button class="btn btn-success" type="submit"><i class="fas fa-search"></i></a></button>
-				</div>
-
+		<div class="container">
+			<div class="page-header text-center">
+				<h1>Room Details</h1>
 			</div>
-		</form>
-		<br>
 
-		<table class="table table-bordered table-hover">
-			<thead>
-				<tr>
-					<td>Room Number</td>
-					<td>Room Name</td>
-					<td>Bed Info</td>
-					<td colspan="2">Action</td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="room : ${roomDetails}">
-					<td th:text="${room.roomNumber}">Room Number</td>
-					<td th:text="${room.roomName}">Room Name</td>
-					<td th:text="${room.bedInfo}">Bed Info</td>
-					<td><a th:href="@{/delete/{roomId}(roomId=${room.roomId})}">Delete</a></td>
-					<td><a th:href="@{/edit/{roomId}(roomId=${room.roomId})}">Edit</a></td>
-				</tr>
-			</tbody>
+			<form method="GET">
+				<div class="input-group">
+
+					<input class="form-control" type="text" placeholder="Room Number"
+						name="roomnumber">
+
+					<div class="input-group-append">
+						<button class="btn btn-success" type="submit">
+							<i class="fas fa-search"></i></a>
+						</button>
+					</div>
+
+				</div>
+			</form>
+			<br>
+
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<td>Room Number</td>
+						<td>Room Name</td>
+						<td>Bed Info</td>
+						<td colspan="2">Action</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="room : ${roomDetails}">
+						<td th:text="${room.roomNumber}">Room Number</td>
+						<td th:text="${room.roomName}">Room Name</td>
+						<td th:text="${room.bedInfo}">Bed Info</td>
+						<td><a th:href="@{/delete/{roomId}(roomId=${room.roomId})}">Delete</a></td>
+						<td><a th:href="@{/edit/{roomId}(roomId=${room.roomId})}">Edit</a></td>
+					</tr>
+				</tbody>
 
 
-		</table>
+			</table>
 
+		</div>
 	</div>
 </body>
 

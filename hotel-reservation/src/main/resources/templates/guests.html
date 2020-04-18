@@ -1,76 +1,42 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>Guests</title>
-
-	<script src="https://kit.fontawesome.com/e379a698ba.js" crossorigin="anonymous"></script>
-
-
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-	<script src="https://kit.fontawesome.com/e379a698ba.js" crossorigin="anonymous"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+<meta charset="utf-8">
+<title>Guests</title>
 </head>
 
 <body>
-	<div class="sticky-top">
-		<nav class="navbar navbar-dark bg-dark">
-			<a class="navbar-brand" href="/"><img src="/img/logo.png"> Canada Hotel</a>
-		</nav>
+	<div layout:fragment="content">
 
-		<nav class="navbar navbar-expand-sm bg-1 navbar-light">
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link" href="/reservations">Reservations</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/guests">Guests</a>
-				</li>
+		<div class="container">
+			<div class="page-header text-center">
+				<h1>GUESTS DETAILS</h1>
+			</div>
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Email Address</th>
+						<th>Country</th>
+						<th>Phone Number</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="guest : ${guestDetails}">
+						<td th:text="${guest.firstName} + ' ' + ${guest.lastName}">Name</td>
+						<td th:text="${guest.emailAddress}">Email Address</td>
+						<td th:text="${guest.country}">Country</td>
+						<td th:text="${guest.phoneNumber}">Phone Number</td>
 
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Rooms</a>
-					<div class="dropdown-menu">
-						<a class="dropdown-item" href="/addroom">Add Room</a>
-						<a class="dropdown-item" href="/rooms">View All Rooms</a>
-						<a class="dropdown-item" href="#">Edit Room</a>
+
+					</tr>
+				</tbody>
 
 
-					</div>
-				</li>
-			</ul>
-		</nav>
-	</div>
-
-	<div class="container">
-		<div class="page-header text-center">
-			<h1>GUESTS DETAILS</h1>
+			</table>
 		</div>
-		<table class="table table-bordered table-striped">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Email Address</th>
-					<th>Country</th>
-					<th>Phone Number</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="guest : ${guestDetails}">
-					<td th:text="${guest.firstName} + ' ' + ${guest.lastName}">Name</td>
-					<td th:text="${guest.emailAddress}">Email Address</td>
-					<td th:text="${guest.country}">Country</td>
-					<td th:text="${guest.phoneNumber}">Phone Number</td>
-
-
-				</tr>
-			</tbody>
-
-
-		</table>
 	</div>
 </body>
 

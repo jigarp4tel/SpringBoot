@@ -1,64 +1,42 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Edit Room</title>
-
-  <script src="https://kit.fontawesome.com/e379a698ba.js" crossorigin="anonymous"></script>
-
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://kit.fontawesome.com/e379a698ba.js" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
+<meta charset="utf-8">
+<title>Edit Room</title>
 </head>
 
 <body>
-  <div class="sticky-top">
-    <nav class="navbar navbar-dark bg-dark">
-      <a class="navbar-brand" href="/"><img src="/img/logo.png"> Canada Hotel</a>
-    </nav>
+	<div layout:fragment="content">
+		<div class="container mt-5 w-50">
+			<div class="card">
 
-    <nav class="navbar navbar-expand-sm bg-1 navbar-light">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="/reservations">Reservations</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/guests">Guests</a>
-        </li>
+				<div class="card-header bg-dark">
+					<h2 class="text-light">Edit Room Details</h2>
+				</div>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Rooms</a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="/addroom">Add Room</a>
-            <a class="dropdown-item" href="/rooms">View All Rooms</a>
-            <a class="dropdown-item" href="#">Edit Room</a>
+				<div class="card-body">
+					<form action="#" th:action="@{/update}" th:object="${room}"
+						method="post">
 
+						<div class="form-group">
+							<input type="text" th:field="*{roomName}" id="roomName"
+								placeholder="Room Name"> <input type="text"
+								th:field="*{roomNumber}" id="roomNumber" placeholder="Room Name">
+						</div>
+						<div class="form-group">
+							<input type="text" th:field="*{bedInfo}" id="bedInfo"
+								placeholder="Bed Info"> <input type="hidden" id="id"
+								th:field="*{roomId}">
+						</div>
+						<button class="btn btn-secondary" type="submit">Update</button>
+					</form>
+				</div>
+			</div>
+		</div>
 
-          </div>
-        </li>
-      </ul>
-    </nav>
-  </div>
-
-  <div class="container">
-    <h3>EDIT ROOM DETAILS</h3>
-
-    <form action="#" th:action="@{/update}" th:object="${room}" method="post">
-
-      <input type="text" th:field="*{roomName}" id="roomName" placeholder="Room Name">
-      <input type="text" th:field="*{roomNumber}" id="roomNumber" placeholder="Room Name">
-      <input type="text" th:field="*{bedInfo}" id="bedInfo" placeholder="Bed Info">
-
-      <input type="hidden" id="id" th:field="*{roomId}">
-
-      <input type="submit" value="Update">
-    </form>
-  </div>
+	</div>
 </body>
 
 </html>
