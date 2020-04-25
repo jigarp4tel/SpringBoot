@@ -32,7 +32,6 @@ public class HotelUserPrincipal implements UserDetails {
 		
 		authGroups.forEach(group -> {
 			grantedAuthorities.add(new SimpleGrantedAuthority(group.getAuthGroup()));
-			System.out.println("PRINTING AUTH GROUP: " + group.getAuthGroup());
 		});
 		
 		return grantedAuthorities;
