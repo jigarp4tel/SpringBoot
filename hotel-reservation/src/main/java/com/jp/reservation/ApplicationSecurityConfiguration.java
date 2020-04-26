@@ -23,17 +23,17 @@ import com.jp.reservation.auth.HotelUserDetailsService;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-	/*
-	 * @Autowired private HotelUserDetailsService userDetailsService;
-	 * 
-	 * @Bean public DaoAuthenticationProvider authenticationProvider() {
-	 * DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-	 * provider.setUserDetailsService(userDetailsService);
-	 * provider.setPasswordEncoder(new BCryptPasswordEncoder(11));
-	 * provider.setAuthoritiesMapper(authoritiesMapper()); return provider;
-	 * 
-	 * }
-	 */
+	
+	  @Autowired private HotelUserDetailsService userDetailsService;
+	  
+	  @Bean public DaoAuthenticationProvider authenticationProvider() {
+	  DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+	  provider.setUserDetailsService(userDetailsService);
+	  provider.setPasswordEncoder(new BCryptPasswordEncoder(11));
+	  provider.setAuthoritiesMapper(authoritiesMapper()); return provider;
+	  
+	  }
+	 
 	
 	
 
@@ -44,23 +44,21 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
 		authorityMapper.setDefaultAuthority("USER");
 		return authorityMapper;
 	}
-
+	
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-	//	auth.authenticationProvider(authenticationProvider());
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		
-		auth
-		.ldapAuthentication()
-		.userDnPatterns("uid={0},ou=people")
-		.groupSearchBase("ou=groups")
-		.authoritiesMapper(authoritiesMapper())
-		.contextSource()
-		.url("ldap://localhost:8389/dc=jigarpatel,dc=com")
-		.and()
-		.passwordCompare()
-		.passwordEncoder(new LdapShaPasswordEncoder())
-		.passwordAttribute("userPassword");
+		auth.authenticationProvider(authenticationProvider());
 	}
+	
+	/*
+	 * @Override protected void configure(AuthenticationManagerBuilder auth) throws
+	 * Exception { auth .ldapAuthentication() .userDnPatterns("uid={0},ou=people")
+	 * .groupSearchBase("ou=groups") .authoritiesMapper(authoritiesMapper())
+	 * .contextSource() .url("ldap://localhost:8389/dc=jigarpatel,dc=com") .and()
+	 * .passwordCompare() .passwordEncoder(new LdapShaPasswordEncoder())
+	 * .passwordAttribute("userPassword"); }
+	 */
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
