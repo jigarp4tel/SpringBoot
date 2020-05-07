@@ -17,4 +17,8 @@ public class GuestService {
 		return this.guestRepository.findAll();
 	}
 	
+	public void addGuest(Guest guest) {
+		 this.guestRepository.save(guest);
+	}
+	
 }

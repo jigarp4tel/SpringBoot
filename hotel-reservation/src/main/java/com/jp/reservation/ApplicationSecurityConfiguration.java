@@ -51,14 +51,6 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
 		auth.authenticationProvider(authenticationProvider());
 	}
 	
-	/*
-	 * @Override protected void configure(AuthenticationManagerBuilder auth) throws
-	 * Exception { auth .ldapAuthentication() .userDnPatterns("uid={0},ou=people")
-	 * .groupSearchBase("ou=groups") .authoritiesMapper(authoritiesMapper())
-	 * .contextSource() .url("ldap://localhost:8389/dc=jigarpatel,dc=com") .and()
-	 * .passwordCompare() .passwordEncoder(new LdapShaPasswordEncoder())
-	 * .passwordAttribute("userPassword"); }
-	 */
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -80,24 +72,6 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
 		
 	}
 
-	/*
-	 * @Bean
-	 * 
-	 * @Override public UserDetailsService userDetailsService() {
-	 * 
-	 * List<UserDetails> users = new ArrayList<UserDetails>();
-	 * users.add(User.withDefaultPasswordEncoder().username("jigarpatel").password(
-	 * "password").roles("USER","ADMIN").build());
-	 * users.add(User.withDefaultPasswordEncoder().username("jdoe").password(
-	 * "foobar").roles("USER").build());
-	 * 
-	 * return new InMemoryUserDetailsManager(users);
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * }
-	 */
+
 
 }
