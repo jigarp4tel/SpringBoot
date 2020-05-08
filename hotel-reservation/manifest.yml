@@ -1,0 +1,4 @@
+---
+applications:
+- name: spring-hotel-reservation
+  path: target/hotel-reservation-1.0.0.jar
