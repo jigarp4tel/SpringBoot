@@ -23,19 +23,19 @@ import com.jp.reservation.auth.HotelUserDetailsService;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-	
-	  @Autowired private HotelUserDetailsService userDetailsService;
-	  
-	  @Bean public DaoAuthenticationProvider authenticationProvider() {
-	  DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-	  provider.setUserDetailsService(userDetailsService);
-	  provider.setPasswordEncoder(new BCryptPasswordEncoder(11));
-	  provider.setAuthoritiesMapper(authoritiesMapper()); return provider;
-	  
-	  }
-	 
-	
-	
+	@Autowired
+	private HotelUserDetailsService userDetailsService;
+
+	@Bean
+	public DaoAuthenticationProvider authenticationProvider() {
+		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+		provider.setUserDetailsService(userDetailsService);
+		provider.setPasswordEncoder(new BCryptPasswordEncoder(11));
+		provider.setAuthoritiesMapper(authoritiesMapper());
+
+		return provider;
+
+	}
 
 	@Bean
 	public GrantedAuthoritiesMapper authoritiesMapper() {
@@ -44,34 +44,22 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
 		authorityMapper.setDefaultAuthority("USER");
 		return authorityMapper;
 	}
-	
+
 	@Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
 		auth.authenticationProvider(authenticationProvider());
 	}
-	
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http
-		.csrf().disable()
-		.authorizeRequests()
-		.antMatchers("/", "/index", "/css/*", "/js/*", "/img/*").permitAll()
-		.anyRequest().authenticated()
-		.and()
-		.formLogin()
-		.loginPage("/login").permitAll()
-		.and()
-		.logout().invalidateHttpSession(true)
-		.clearAuthentication(true)
-		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-		.logoutSuccessUrl("/logout-success").permitAll();
-		
-		
+		http.csrf().disable().authorizeRequests().antMatchers("/", "/index", "/css/*", "/js/*", "/img/*").permitAll()
+				.anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().and().logout()
+				.invalidateHttpSession(true).clearAuthentication(true)
+				.logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/logout-success")
+				.permitAll();
+
 	}
-
-
 
 }
